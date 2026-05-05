@@ -3,6 +3,7 @@ package qouteall.imm_ptl.core.compat.iris_compatibility;
 import net.irisshaders.iris.Iris;
 import net.irisshaders.iris.pipeline.WorldRenderingPipeline;
 import net.irisshaders.iris.shadows.ShadowRenderer;
+import net.irisshaders.iris.uniforms.SystemTimeUniforms;
 import net.minecraft.client.renderer.LevelRenderer;
 import qouteall.q_misc_util.Helper;
 
@@ -32,8 +33,14 @@ public class IrisInterface {
         
         }
         
-        public void reloadPipelines() {}
+        public void reloadPipelines() {
+
+        }
     
+        public void updatePerFrameUniforms() {
+
+        }
+        
         @Nullable
         public String getShaderpackName() {
             return null;
@@ -83,6 +90,18 @@ public class IrisInterface {
         @Override
         public void reloadPipelines() {
             Iris.getPipelineManager().destroyPipeline();
+        }
+    
+        @Override
+        public void updatePerFrameUniforms() {
+            // Skip update if the player disabled it (I Dunno might be pref issues)
+            if (qouteall.imm_ptl.core.IPCGlobal.skipIrisUniformUpdate) {
+                return;
+            }
+            Helper.noError(() -> {
+                SystemTimeUniforms.COUNTER.beginFrame();
+                return null;
+            });
         }
     
         @Nullable
