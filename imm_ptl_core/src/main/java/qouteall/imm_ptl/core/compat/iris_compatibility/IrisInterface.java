@@ -94,7 +94,7 @@ public class IrisInterface {
     
         @Override
         public void updatePerFrameUniforms() {
-            // Skip update if the player disabled it (I Dunno might be pref issues)
+            // Skip the updates if the player disables it (Didn't lower FPS In my testing but just incase)
             if (qouteall.imm_ptl.core.IPCGlobal.skipIrisUniformUpdate) {
                 return;
             }
