@@ -39,5 +39,5 @@ public class IPCGlobal {
     
     public static boolean debugEnableStencilWithIris = false;
     
-    public static boolean IrisUniformUpdate = true;
+    public static boolean irisUniformUpdate = true;
 }

@@ -603,7 +603,7 @@ public class ClientDebugCommand {
         registerSwitchCommand(
             builder,
             "iris_uniform_updates",
-            cond -> IPCGlobal.IrisUniformUpdate = cond
+            cond -> IPCGlobal.irisUniformUpdate = cond
         );
         registerSwitchCommand(
             builder,
